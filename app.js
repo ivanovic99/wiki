@@ -7,7 +7,6 @@ const routes = require("./routes");
 const bodyParser = require("body-parser");
 const models = require("./models");
 
-
 var env = nunjucks.configure("views", { noCache: true });
 // hace res.render funcionar con archivos html
 app.set("view engine", "html");
@@ -22,7 +21,7 @@ app.use(bodyParser.json());
 app.use("/", routes);
 
 models.db
-  .sync({ force: true })
+  .sync({ force: false })
   .then(function() {
     // asegurate de reemplazar el nombre de abajo con tu app de express
     app.listen(3000, function() {
